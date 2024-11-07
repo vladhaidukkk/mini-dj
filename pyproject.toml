@@ -7,7 +7,7 @@ requires-python = ">=3.12.5"
 dependencies = []
 
 [dependency-groups]
-dev = ["pyright>=1.1.388", "ruff>=0.7.2"]
+dev = ["pyright>=1.1.388", "pytest-cov>=6.0.0", "pytest>=8.3.3", "ruff>=0.7.2"]
 
 [tool.ruff]
 target-version = "py312"
@@ -15,4 +15,11 @@ line-length = 120
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["COM812", "D1", "D203", "D213", "ISC001"]
+ignore = ["COM812", "D1", "D203", "D213", "INP", "ISC001", "S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**.py" = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -10,5 +10,15 @@ lint:
 fix:
     uv run ruff check --fix
 
-types:
+type:
     uv run pyright
+
+# Testing commands
+test:
+    uv run pytest -v
+
+cov:
+    uv run pytest -v --cov
+
+cov-xml:
+    uv run pytest -v --cov --cov-report=xml
