@@ -1,10 +1,14 @@
 default: fmt fix
 
+# Code quality commands
 fmt:
-    ruff format
+    uv run ruff format
 
 lint:
-    ruff check
+    uv run ruff check
 
 fix:
-    ruff check --fix
+    uv run ruff check --fix
+
+types:
+    uv run pyright
