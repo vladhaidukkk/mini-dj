@@ -16,10 +16,17 @@ Thumbs.db
 # Virtual environments
 .venv/
 
-# Cache
+# Cache directories and files
 __pycache__/
 *.py[cod]
 
 # Coverage reports
 .coverage
 coverage.xml
+
+# SQLite files
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal

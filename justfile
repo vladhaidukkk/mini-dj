@@ -1,5 +1,9 @@
 default: fmt fix
 
+# Project management commands
+serve:
+    uv run ./project/manage.py runserver
+
 # Code quality commands
 fmt:
     uv run ruff format
