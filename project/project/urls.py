@@ -17,15 +17,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import include, path
 from orders.views import OrderViewSet, orders_page
 from rest_framework import routers
 
-router = routers.SimpleRouter()
-router.register(r"orders", OrderViewSet)
+api_router = routers.SimpleRouter()
+api_router.register(r"orders", OrderViewSet)
+
+
+def spa_page(request):
+    return render(request, "index.html")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("orders/", orders_page),
-    path("api/", include(router.urls)),
+    path("api/", include(api_router.urls)),
+    path("ssr/orders/", orders_page),
+    path("", spa_page),
 ]
