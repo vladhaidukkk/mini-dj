@@ -1,4 +1,4 @@
-default: fmt fix
+default: fmt lint
 
 # Project management commands
 project := "project"
