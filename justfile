@@ -1,8 +1,22 @@
 default: fmt fix
 
 # Project management commands
+project_name := "project"
+
+start-project name:
+    uv run django-admin startproject {{name}}
+
+start-app name:
+    cd ./{{project_name}} && uv run manage.py startapp {{name}}
+
 serve:
-    uv run ./project/manage.py runserver
+    cd ./{{project_name}} && uv run manage.py runserver
+
+migrate:
+    cd ./{{project_name}} && uv run manage.py migrate
+
+create-superuser:
+    cd ./{{project_name}} && uv run manage.py createsuperuser
 
 # Code quality commands
 fmt:
@@ -14,7 +28,7 @@ lint:
 fix:
     uv run ruff check --fix
 
-type:
+check-types:
     uv run pyright
 
 # Testing commands
