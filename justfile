@@ -1,22 +1,28 @@
 default: fmt fix
 
 # Project management commands
-project_name := "project"
+project := "project"
 
 start-project name:
     uv run django-admin startproject {{name}}
 
 start-app name:
-    cd ./{{project_name}} && uv run manage.py startapp {{name}}
+    cd ./{{project}} && uv run manage.py startapp {{name}}
 
 serve:
-    cd ./{{project_name}} && uv run manage.py runserver
+    cd ./{{project}} && uv run manage.py runserver
+
+make-migration app:
+    cd ./{{project}} && uv run manage.py makemigrations {{app}}
+
+make-migrations:
+    cd ./{{project}} && uv run manage.py makemigrations
 
 migrate:
-    cd ./{{project_name}} && uv run manage.py migrate
+    cd ./{{project}} && uv run manage.py migrate
 
 create-superuser:
-    cd ./{{project_name}} && uv run manage.py createsuperuser
+    cd ./{{project}} && uv run manage.py createsuperuser
 
 # Code quality commands
 fmt:
